@@ -65,5 +65,4 @@ See [../README.md](../README.md) for:
 
 **Ready to create amazing sketches!** 🎨
 # PS-Style-GAN-Image-Generater-for-facial-entertainment-with-Features
-# PS-Style-GAN-Image-Generater-for-facial-entertainment-with-Features
-# PS-Style-GAN-Image-Generater-for-facial-entertainment-with-Features
+
