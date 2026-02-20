@@ -2,21 +2,29 @@
 
 This repository is an evolution of the [original PS-Style-GAN project](https://github.com/ajaykumarreddy-k/PS-Style-GAN-Image-Generater-for-facial-entertainment-). While the base project focused on high-quality hybrid sketch generation, this version serves as a dedicated environment for implementing advanced facial manipulation features.
 
-## 🌟 New Feature Roadmap
+---
 
-This repo is actively being updated to include:
+## 🌟 Feature Roadmap
 
-* [ ] **Face Morphing**: Seamlessly transition between two facial identities.
-* [ ] **Emotion Change**: Modify facial expressions (e.g., Happy, Sad, Angry) using GAN latent space manipulation.
-* [ ] **Enhanced UI**: Updated Gradio interface to support multi-modal inputs.
+| Feature | Description | Status |
+| --- | --- | --- |
+| **Hybrid Sketch** | Optimized GAN-based artistic shading | ✅ |
+| **Face Morphing** | Seamlessly transition between facial identities | 🛠️ |
+| **Emotion Change** | Modify expressions via latent space manipulation | 🛠️ |
+| **Enhanced UI** | Updated Gradio interface with multi-modal support | 🛠️ |
+
+---
 
 ## 🚀 Quick Start
 
-### Web Interface
+### 🖥️ Web Interface
 
 Run the production-ready Gradio app to use the current hybrid sketch generator:
 
 ```bash
+# Clone the repository
+git clone https://github.com/ajaykumarreddy-k/PS-Style-GAN-Image-Generater-for-facial-entertainment-with-Features.git
+
 # Install dependencies
 pip install -r requirements.txt
 
@@ -25,9 +33,10 @@ python gradio_app.py
 
 ```
 
-Default URL: **http://localhost:7860**
+> [!TIP]
+> Once running, access the local dashboard at: **http://localhost:7860**
 
-### Batch Processing
+### 🧪 Batch Processing
 
 To generate multiple variations with different AI strengths (30%, 35%, 40%) at once:
 
@@ -36,38 +45,42 @@ python enhanced_hybrid.py
 
 ```
 
+---
+
 ## 📦 Repository Structure
 
-| File | Role |
-| --- | --- |
-| `gradio_app.py` | Main web interface for real-time generation |
-| `enhanced_hybrid.py` | Script for batch processing and testing |
-| `final_model_SHADING.pth` | Core GAN model (46 MB) |
-| `requirements.txt` | Project dependencies |
-| `test_face.jpg` | Sample input for testing |
+```text
+.
+├── gradio_app.py             # Main web interface
+├── enhanced_hybrid.py        # Batch processing script
+├── final_model_SHADING.pth   # Core GAN model weights (46 MB)
+├── requirements.txt          # Environment dependencies
+└── test_face.jpg             # Sample input for testing
 
-## ⚙️ Model Configuration (Current)
-
-The current implementation uses the **ENHANCED_35** preset for optimal sketch quality:
-
-* **AI Strength**: 35% (Balanced detail)
-* **Blur Kernel**: 18 (Sharp line definition)
-* **Preprocessing**: Integrated Histogram Equalization & Sharpening
-* **Contrast Ratios**: AI 1.15x / Final 1.05x
-
-## 🔧 Development & Extension
-
-Since this is a dedicated repo for new features, feel free to:
-
-1. **Experiment with Latent Directions**: Edit the processing logic in `gradio_app.py` to test emotion vectors.
-2. **Swap Models**: Replace `final_model_SHADING.pth` with your own custom-trained weights.
-3. **UI Customization**: Use the Gradio layout blocks to add sliders for the new morphing features.
+```
 
 ---
 
-**Project Lead:** Ajay Kumar Reddy K
- **Project Member:** Sameer Raja E
-**Project Member:** Jeshiba Fedorah 
-**Project Member:** Thanvarshini V R
+## ⚙️ Model Presets (ENHANCED_35)
+
+| Parameter | Value |
+| --- | --- |
+| **AI Strength** | 35% (Optimal Balance) |
+| **Blur Kernel** | 18 (Sharp Definition) |
+| **Preprocessing** | Histogram Eq. + Sharpening |
+| **Contrast Ratio** | AI 1.15x / Final 1.05x |
+
+---
+
+## 👥 The Team
+
+* **Project Lead:** [Ajay Kumar Reddy K](https://github.com/ajaykumarreddy-k)
+* **Member:** Sameer Raja E
+* **Member:** Jeshiba Fedorah
+* **Member:** Thanvarshini V R
+
+---
 
 **Status:** In-Development (Feature Addition Phase) 🚀
+
+Would you like me to generate a **custom banner image** for the top of this README to make it even more visually striking?
