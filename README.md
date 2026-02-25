@@ -684,7 +684,7 @@ These are the **novel, original contributions** introduced in this project beyon
   Three architectures.  Three pipelines.  One converged research project.
 ```
 
-**🏆 SRM Institute of Science and Technology — Research Project Submission**  
+
 *PS-Style GAN Image Generator for Facial Entertainment with Features*
 
 [↗ Upstream Repo](https://github.com/ajaykumarreddy-k/PS-Style-GAN-Image-Generater-for-facial-entertainment-)
