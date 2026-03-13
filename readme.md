@@ -373,13 +373,13 @@ The pipeline runs end-to-end on button click via `full_pipeline()` which chains 
 ```bash
 # 1. Clone the repo
 git clone https://github.com/your-org/project-vibe-ps-style-gan.git
-cd project-vibe-ps-style-gan
+cd main
 
 # 2. Install dependencies
 pip install torch torchvision gradio opencv-python dlib scikit-image Pillow numpy
 
 # 3. Place model weights in root directory
-# → final_model_SHADING.pth
+# → final_model_SHADING.pth(it's in root if u palce the cd main)
 
 # 4. Run
 python app.py
