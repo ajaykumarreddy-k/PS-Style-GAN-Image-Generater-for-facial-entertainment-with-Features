@@ -1,0 +1,18 @@
+{
+  "M1_morphing": {
+    "ssim_vs_sub1": 0.6039514541625977,
+    "ssim_vs_sub2": 0.5179803967475891,
+    "balance_pct": "53.8/46.2"
+  },
+  "M2_detection": {
+    "threshold": 0.35,
+    "accuracy_pct": 66.66666666666666
+  },
+  "M3_sketch": {
+    "method": "XDoG + Gabor Hair Flow + VGG19 + H-DSL Refinement"
+  },
+  "M4_mean_face": {
+    "population_n": 20,
+    "avg_ssim_warped": 0.44229012727737427
+  }
+}
