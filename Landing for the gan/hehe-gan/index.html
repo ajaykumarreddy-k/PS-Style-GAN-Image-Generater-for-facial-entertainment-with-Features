@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS-Style GAN — Sketch Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;700&family=Google+Sans+Mono&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">
+        <span style="background:#4285F4"></span>
+        <span style="background:#E91E8C"></span>
+        <span style="background:#F9AB00"></span>
+        <span style="background:#34A853"></span>
+      </div>
+      PS-Style GAN
+    </a>
+    <ul class="nav-links">
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#algorithm">Algorithm</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a
+          href="https://github.com/ajaykumarreddy-k/PS-Style-GAN-Image-Generater-for-facial-entertainment-with-Features"
+          target="_blank" class="nav-cta">View on GitHub →</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-circles">
+      <div class="c c1"></div>
+      <div class="c c2"></div>
+      <div class="c c3"></div>
+      <div class="c c4"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        SRM Institute of Science and Technology · Chennai, India
+      </div>
+      <h1>
+        <span class="word-ps">PS</span><span class="word-style">-Style</span> <span
+          class="word-gan">GAN</span><br>Sketch Generator
+      </h1>
+      <p class="hero-subtitle">Hyper-realistic facial sketch generation using a hybrid PS-Style GAN and CV2 model —
+        preserving identity while delivering artistic beauty.</p>
+
+      <div class="hero-authors">
+        <div class="author-chip">
+          <div class="author-avatar" style="background:#4285F4">AK</div>
+          <div>
+            <div class="author-name">Ajay Kumar Reddy K</div>
+            <div class="author-role">CSE · SRM</div>
+          </div>
+        </div>
+        <div class="author-chip">
+          <div class="author-avatar" style="background:#E91E8C">SR</div>
+          <div>
+            <div class="author-name">Sameer Raja E</div>
+            <div class="author-role">CSE · SRM</div>
+          </div>
+        </div>
+        <div class="author-chip">
+          <div class="author-avatar" style="background:#F9AB00">JF</div>
+          <div>
+            <div class="author-name">Jesheba Fedorah E</div>
+            <div class="author-role">CSE · SRM</div>
+          </div>
+        </div>
+        <div class="author-chip">
+          <div class="author-avatar" style="background:#34A853">TV</div>
+          <div>
+            <div class="author-name">Thanvarshini VR</div>
+            <div class="author-role">CSE · SRM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-cta-row">
+        <a href="https://github.com/ajaykumarreddy-k/PS-Style-GAN-Image-Generater-for-facial-entertainment-with-Features"
+          target="_blank" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+          View on GitHub
+        </a>
+        <a href="#abstract" class="btn-secondary">Read the Paper ↓</a>
+      </div>
+
+      <div class="keyword-pills" style="justify-content: center; margin-top: 40px;">
+        <span class="pill">StyleGAN</span>
+        <span class="pill">Face Sketch Generation</span>
+        <span class="pill">GANs</span>
+        <span class="pill">Computer Vision</span>
+        <span class="pill">Image Processing</span>
+        <span class="pill">Facial Entertainment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABSTRACT -->
+  <section class="section-curve" id="abstract">
+    <div class="section-inner fade-in">
+      <div class="section-label">Abstract</div>
+      <h2 class="section-title">The Problem &amp; The Solution</h2>
+      <div class="abstract-content">
+        <p class="section-body">
+          Most modern filters face significant <strong>edge degradation</strong> and <strong>identity loss</strong>
+          during
+          stylization. PS-Style GAN fixes this — combining a CV2-guided Hybrid Model with controlled noise injection to
+          extract semantic facial features, preserve structural identity, and generate high-quality sketches fast.
+        </p>
+        <p class="section-body">
+          In light of the recent growth of AI-powered face filters, facial entertainment has seen a significant spike in
+          user engagement. The basic problem identified in most modern filters is that they generate sketches with
+          <strong>high latency</strong> and <strong>low identity preservation</strong>. Traditional Gaussian and Inverse
+          Filtering often fail due to a lack of <strong>semantic understanding</strong>, while pure GAN approaches
+          frequently suffer from <strong>structure loss</strong>. To tackle this, we use PS Style GAN and CV2 Hybrid
+          Model
+          which produces better quality images with high resemblance in a shorter period of time. PS-Style GAN bridges
+          this gap using structural edge guidance and controlled latent space injection to retain originality.
+          Applications include social media, digital art, personalized merchandise, and a face morphing feature that
+          blends two people's faces.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section id="methodology">
+    <div class="fade-in">
+      <div class="section-label">Methodology</div>
+      <div class="two-col">
+        <div>
+          <h2 class="section-title">How the system works</h2>
+          <p class="section-body">
+            The framework integrates classical computer vision techniques with deep generative modeling — transforming
+            facial photographs into stylized pencil sketches while preserving structural identity.
+          </p>
+        </div>
+        <div>
+          <p style="font-size:15px; color:var(--muted); line-height:1.8">
+            The hybrid approach combines deterministic edge-based features from OpenCV with semantic facial embeddings
+            learned using a deep generative network. The result is a sketch that's both <em>geometrically accurate</em>
+            and <em>artistically expressive</em>.
+          </p>
+        </div>
+      </div>
+
+      <div class="pipeline-grid">
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#4285F4">01</div>
+          <div class="step-title">Image Input</div>
+          <div class="step-desc">User uploads a facial image. Acts as the entry point to the pipeline.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#E91E8C">02</div>
+          <div class="step-title">Preprocessing &amp; Normalization</div>
+          <div class="step-desc">Resized to 256×256, pixel-normalized, ensuring stable input distribution for downstream
+            processing.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#F9AB00">03</div>
+          <div class="step-title">Landmark Detection</div>
+          <div class="step-desc">68-point facial landmarks detected using dlib for precise geometric alignment and
+            structural consistency.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#34A853">04</div>
+          <div class="step-title">Anchor Point Augmentation</div>
+          <div class="step-desc">Additional 25 control points (hair + boundary) added to stabilize warping and prevent
+            edge distortion.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#EA4335">05</div>
+          <div class="step-title">Face Morphing</div>
+          <div class="step-desc">Delaunay triangulation constructs intermediate geometry via <em>pm = (1−α)pts₁ +
+              α·pts₂</em> — enabling smooth identity interpolation.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#FF6D00">06</div>
+          <div class="step-title">Structural Edge Extraction</div>
+          <div class="step-desc">OpenCV-based edge detection captures high-frequency facial contours (jawline, eyes,
+            nose) as structural guidance.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#4285F4">07</div>
+          <div class="step-title">Classical Sketch Generation</div>
+          <div class="step-desc">Grayscale + Gaussian blur + dodge division produces a base pencil sketch preserving
+            geometric fidelity.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#E91E8C">08</div>
+          <div class="step-title">PS-Style GAN Refinement</div>
+          <div class="step-desc">Deep generative model enhances texture using controlled noise injection and
+            skip-connected decoding for identity preservation.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#F9AB00">09</div>
+          <div class="step-title">Quality Enhancement</div>
+          <div class="step-desc">Post-processing sharpens edges, improves shading consistency, and removes minor
+            artifacts for visual clarity.</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num" style="color:#34A853">10</div>
+          <div class="step-title">Hybrid Fusion &amp; Output</div>
+          <div class="step-desc">Final sketch computed as <em>S = GAN · α + Edge · (1−α)</em>, balancing artistic
+            texture with structural precision.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <div class="full-bleed">
+    <div style="max-width:1200px; margin:0 auto;" class="fade-in">
+      <div class="section-label">Key Innovations</div>
+      <h2 class="section-title">What makes PS-Style GAN different</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#E8F0FE">🎯</div>
+          <h3>Identity Preservation</h3>
+          <p>Achieves <strong>structural consistency</strong> by extracting prominent identity markers — eyes, symmetry,
+            jawline — through the entire synthesis cycle.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FCE8F0">⚡</div>
+          <h3>Faster Generation</h3>
+          <p>Combining CV2 and GAN allows for an <strong>optimized inference pipeline</strong>, producing results
+            significantly faster than diffusion-based heavy models.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#E6F4EA">🧬</div>
+          <h3>Face Morphing</h3>
+          <p>Performs smooth <strong>latent interpolation</strong> between identities using Delaunay mesh warping and
+            93-point geometric control grids.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FEF7E0">🎨</div>
+          <h3>Controlled Noise Injection</h3>
+          <p>Ensures <strong>edge-guided synthesis</strong> by injecting structured noise that preserves spatial layout
+            while generating artistic pencil textures.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FCE8E6">🔗</div>
+          <h3>Skip-Connection Decoder</h3>
+          <p>Implementing <strong>multi-scale preservation</strong> allows the network to retain spatial data from the
+            encoder for high-fidelity edges.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#E8F0FE">📐</div>
+          <h3>Structural Edge Extraction</h3>
+          <p>Extracts high-frequency facial contours using OpenCV to provide deterministic <strong>edge-guided
+              structure</strong> for the generative pipeline.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FCE8F0">⚛️</div>
+          <h3>Hybrid Fusion Strategy</h3>
+          <p>Combines GAN-generated textures with classical edge maps using weighted fusion for <strong>adaptive fusion
+              balance</strong> and identity retention.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#E6F4EA">⚙️</div>
+          <h3>Training Optimization</h3>
+          <p>Structured training pipeline with feature-aligned loss ensures stability, convergence, and
+            <strong>feature-aligned learning</strong> quality.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FEF7E0">🌐</div>
+          <h3>Broad Applications</h3>
+          <p>Designed for real-time engagement in social media, digital art, gaming avatars, and personalized
+            merchandise with high identity retention.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALGORITHM -->
+  <section id="algorithm">
+    <div class="fade-in">
+      <div class="section-label">Algorithm</div>
+      <h2 class="section-title">The full pipeline in pseudocode</h2>
+      <p class="section-body">End-to-end algorithm from raw face images to final hybrid neural sketch.</p>
+      <div class="algo-block">
+        <pre><span class="algo-cmt">// PS-Style GAN · Hybrid Facial Sketch Algorithm</span>
+<span class="algo-cmt">// Input: Face images I1, I2 · Morph factor α · Blend weight β</span>
+<span class="algo-cmt">// Output: Final neural sketch S</span>
+
+<span class="algo-kw">Step 1</span>: <span class="algo-fn">Preprocessing</span>
+  Resize I1, I2 → <span class="algo-num">256</span>×<span class="algo-num">256</span>
+  Normalize pixel values to <span class="algo-str">[0, 1]</span>
+
+<span class="algo-kw">Step 2</span>: <span class="algo-fn">Landmark Detection</span> <span class="algo-cmt">// ensures geometric alignment</span>
+  Detect <span class="algo-num">68</span> facial landmarks using dlib
+  Apply upsampling if face detection fails
+
+<span class="algo-kw">Step 3</span>: <span class="algo-fn">Anchor Point Generation</span>
+  Add <span class="algo-num">9</span> hair points + <span class="algo-num">16</span> boundary points
+  Total control points = <span class="algo-num">93</span> per image
+
+<span class="algo-kw">Step 4</span>: <span class="algo-fn">Face Morphing</span>
+  pm = (<span class="algo-num">1</span> − α) · pts1 + α · pts2
+  Delaunay triangulation → affine warp → blend → morphed face M
+
+<span class="algo-kw">Step 5</span>: <span class="algo-fn">Classical Sketch (CV2)</span>
+  M → grayscale → Gaussian blur → dodge division → edge sharpening
+
+<span class="algo-kw">Step 6</span>: <span class="algo-fn">GAN-Based Refinement</span> <span class="algo-cmt">// preserves high-frequency details</span>
+  Extract features via frozen VGG19 encoder
+  Decode with skip connections → GAN sketch
+
+<span class="algo-kw">Step 7</span>: <span class="algo-fn">Hybrid Fusion</span> <span class="algo-cmt">// balances texture vs structure</span>
+  S = GAN × β + CV2 × (<span class="algo-num">1</span> − β)
+
+<span class="algo-kw">return</span> Final sketch image S</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results">
+    <div class="fade-in">
+      <div class="section-label">Results</div>
+      <h2 class="section-title">Experimental observations</h2>
+      <p class="section-body">Evaluated across multiple facial inputs for quality, identity preservation, and morphing
+        coherence.</p>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-img-container">
+            <img src="public/morphing_output_1775555095990.png" alt="Face Morphing Output">
+          </div>
+          <div class="result-caption">
+            Face Morphing Output
+            <div class="result-sub">93-point Delaunay triangulation blend</div>
+          </div>
+        </div>
+        <div class="result-card">
+          <div class="result-img-container">
+            <img src="public/facemorph_Output.png" alt="Classical CV2 Sketch">
+          </div>
+          <div class="result-caption">
+            Classical CV2 Sketch
+            <div class="result-sub">CV2-only → strong edges, weak texture</div>
+          </div>
+        </div>
+        <div class="result-card">
+          <div class="result-img-container">
+            <img src="public/Gan_ouput.png" alt="PS-Style GAN Hybrid Output">
+          </div>
+          <div class="result-caption">
+            PS-Style GAN Hybrid Output
+            <div class="result-sub">Hybrid → balanced output with identity retention</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="margin-top: 32px; padding: 24px; background: var(--surface); border-radius: 16px; border: 1px solid var(--border);">
+        <div
+          style="font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">
+          Insights & Analysis</div>
+        <p style="font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0;">
+          The hybrid architecture outperforms standalone methods by leveraging the geometric reliability of CV2 and the
+          semantic richness of GANs. This tradeoff ensures that while artistic texture is added, the underlying facial
+          structure remains consistent with the source identity. <strong>Identity preservation</strong> is maintained
+          through skip-connection data flow and precise mesh-based warping.
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top:40px;">
+        <div
+          style="background:var(--surface); border-radius:16px; padding:28px; text-align:center; border:1px solid var(--border)">
+          <div style="font-size:42px; font-weight:700; font-family:var(--font-display); color:#4285F4">93</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:4px">Control Points per Face</div>
+        </div>
+        <div
+          style="background:var(--surface); border-radius:16px; padding:28px; text-align:center; border:1px solid var(--border)">
+          <div style="font-size:42px; font-weight:700; font-family:var(--font-display); color:#E91E8C">5</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:4px">Progressive GAN Iterations</div>
+        </div>
+        <div
+          style="background:var(--surface); border-radius:16px; padding:28px; text-align:center; border:1px solid var(--border)">
+          <div style="font-size:42px; font-weight:700; font-family:var(--font-display); color:#34A853">2×</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:4px">Faster than Diffusion Models</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <div class="full-bleed" id="references">
+    <div style="max-width:1200px; margin:0 auto;" class="fade-in">
+      <div class="section-label">References</div>
+      <h2 class="section-title">Related work</h2>
+      <div class="ref-list">
+        <!-- VISIBLE REFERENCES -->
+        <div class="ref-item">
+          <span class="ref-num">[1]</span>
+          <span>Jain, K. K., et al. (2024). <strong>PS-StyleGAN: Illustrative portrait sketching using attention-based
+              style adaptation.</strong> arXiv.</span>
+        </div>
+        <div class="ref-item">
+          <span class="ref-num">[2]</span>
+          <span>Asimopoulos, D. C., et al. (2022). <strong>Generative adversarial networks: A systematic review and
+              applications.</strong> SHS Web of Conferences.</span>
+        </div>
+        <div class="ref-item">
+          <span class="ref-num">[3]</span>
+          <span>Wu, H., et al. (2025). <strong>One-shot face sketch synthesis in the wild via generative diffusion
+              prior.</strong> arXiv.</span>
+        </div>
+        <div class="ref-item">
+          <span class="ref-num">[4]</span>
+          <span>Fan, D., et al. (2022). <strong>Facial-sketch synthesis: A new challenge.</strong> Machine Intelligence
+            Research.</span>
+        </div>
+
+        <!-- HIDDEN REFERENCES -->
+        <div class="more-refs hidden">
+          <div class="ref-item">
+            <span class="ref-num">[5]</span>
+            <span>Li, T., et al. (2025). <strong>Text to sketch generation with multi-styles.</strong> arXiv.</span>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">[6]</span>
+            <span>Sun, B., et al. (2024). <strong>Multi-style facial sketch synthesis through masked generative
+                modeling.</strong> arXiv.</span>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">[7]</span>
+            <span>Jang, W., et al. (2024). <strong>Toonify3D: StyleGAN-based 3D stylized face generator.</strong> ACM
+              SIGGRAPH.</span>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">[8]</span>
+            <span>Gao, F., et al. (2023). <strong>Human-inspired facial sketch synthesis with dynamic
+                adaptation.</strong> ICCV.</span>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">[9]</span>
+            <span>Peng, Y., et al. (2023). <strong>Sketch-guided latent diffusion model for high-fidelity face
+                synthesis.</strong> IEEE Access.</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="view-more-refs">View All References →</button>
+
+      <div style="margin-top: 60px;"></div>
+
+      <div class="section-label">Future Scope</div>
+      <h2 class="section-title">Scaling the vision</h2>
+      <p class="section-body">
+        Real-time deployment for mobile AR, multi-style sketching (charcoal, oil, ink), and adaptive fusion tuning for
+        varied lighting conditions.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="labs-footer">
+    <div class="labs-footer-top">
+      <div class="labs-footer-actions">
+        <div class="labs-icons">
+          <a href="https://github.com/ajaykumarreddy-k/PS-Style-GAN-Image-Generater-for-facial-entertainment-with-Features"
+            target="_blank" class="labs-icon" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="labs-footer-brand">PS-Style GAN</div>
+
+    <div class="labs-footer-bottom">
+      <div class="labs-footer-bottom-inner" style="justify-content: center;">
+        <span>Designed by Ajay</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
