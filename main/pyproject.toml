@@ -1,0 +1,19 @@
+[project]
+name = "ps-style-gan-face-morph"
+version = "0.1.0"
+description = "Local face morphing and GAN sketch generation with Gradio."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "torch",
+    "torchvision",
+    "Pillow",
+    "scikit-image",
+    "dlib",
+    "gradio",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
